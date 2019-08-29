@@ -1,16 +1,11 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
-import optionsPNG from "../../assets/options.png";
 import { COLORS } from "../../constants";
+import { ShadowBox } from "../../components/ShadowBox";
 
 const style = StyleSheet.create({
-  outside: {
-    marginVertical: 8,
-    shadowColor: "rgba(0,0,0,1)",
-    shadowRadius: 6,
-    shadowOpacity: 0.5
-  },
   container: {
+    marginVertical: 8,
     width: 100,
     justifyContent: "center",
     alignItems: "center",
@@ -26,6 +21,7 @@ const style = StyleSheet.create({
     backgroundColor: "white"
   },
   text: {
+    fontWeight: "500",
     textAlign: "center",
     color: COLORS.primary
   }
@@ -36,15 +32,15 @@ export const NavigationButton: React.FC<{
   onPress: () => void;
 }> = ({ label, onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={style.outside}>
-      <View style={style.container}>
+    <ShadowBox>
+      <TouchableOpacity onPress={onPress} style={style.container}>
         <View style={style.imgBox}>
-          <Image source={optionsPNG} />
+          <Image source={require("../../assets/options.png")} />
         </View>
         <View style={style.textBox}>
           <Text style={style.text}>{label}</Text>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </ShadowBox>
   );
 };

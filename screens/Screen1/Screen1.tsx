@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { View, Text, Button, ImageBackground, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ScreenProps } from "../../utils";
 import { ROUTES } from "../../constants";
 import { Screen } from "../../components/Screen";
