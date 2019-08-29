@@ -6,5 +6,8 @@ export const ROUTES = {
 } as const;
 
 export const COLORS = {
-  primary: "#204676"
+  primary: "#204676",
+  buttonBg: "#2C4F84",
+  red: "#FF4A46",
+  orange: "#FC5830"
 } as const;
