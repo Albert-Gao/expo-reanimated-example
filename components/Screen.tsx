@@ -15,7 +15,10 @@ const style = StyleSheet.create({
   }
 });
 
-export const Screen: React.FC = ({ children }) => {
+export const Screen: React.FC<{ isBgDarker?: boolean }> = ({
+  isBgDarker = false,
+  children
+}) => {
   return (
     <ImageBackground source={bg} style={style.background}>
       <SafeAreaView style={style.container}>
