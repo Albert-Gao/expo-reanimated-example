@@ -5,6 +5,7 @@ import { ROUTES } from "../../constants";
 import { Screen } from "../../components/Screen";
 import { NavigationButton } from "./NavigationButton";
 import { AnimatedObject } from "./AnimatedObject";
+import { Crab } from "./Crab";
 
 const style = StyleSheet.create({
   container: {
@@ -47,7 +48,7 @@ export const Screen1: React.FC<ScreenProps> = ({ navigation }) => {
           durationInSec={18}
           top="48%"
         />
-
+        <Crab />
         <View style={style.buttonsBox}>
           {[
             "self check",
