@@ -1,12 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { COLORS } from "../../../constants";
-import { BottomBar } from "../../../components/BottomBar";
+import { SectionHeader } from "../../components/SectionHeader";
 
 const style = StyleSheet.create({
   container: {},
-  headerBox: { backgroundColor: COLORS.red, padding: 16 },
-  header: { color: "white" },
   contentBox: {
     backgroundColor: "white",
     padding: 16,
@@ -19,11 +16,7 @@ const style = StyleSheet.create({
 export const Description: React.FC = () => {
   return (
     <View style={style.container}>
-      <View style={style.headerBox}>
-        <Text style={style.header}>
-          Let's have a look at your triggers to gamble
-        </Text>
-      </View>
+      <SectionHeader text="Let's have a look at your triggers to gamble" />
       <View style={style.contentBox}>
         <Text style={style.content}>
           The following are a range of common gambling triggers. Tap and select

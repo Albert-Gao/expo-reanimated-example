@@ -26,11 +26,15 @@ export const Screen1: React.FC<ScreenProps> = ({ navigation }) => {
     <Screen>
       <View style={style.container}>
         <View style={style.buttonsBox}>
-          <NavigationButton label="self check" onPress={onPress} />
-          <NavigationButton label="Money & time" onPress={onPress} />
-          <NavigationButton label="Harms" onPress={onPress} />
-          <NavigationButton label="My Reasons" onPress={onPress} />
-          <NavigationButton label="Triggers" onPress={onPress} />
+          {[
+            "self check",
+            "Money & time",
+            "Harms",
+            "My Reasons",
+            "Triggers"
+          ].map(label => (
+            <NavigationButton key={label} label={label} onPress={onPress} />
+          ))}
         </View>
       </View>
     </Screen>
