@@ -1,6 +1,10 @@
 import React from "react";
 import Animated from "react-native-reanimated";
-import { runLoop } from "../../utils/animation";
+import {
+  runLoop,
+  updateLinearValue,
+  SCREEN_WIDTH
+} from "../../utils/animation";
 import { ImageURISource } from "react-native";
 
 export const AnimatedObject: React.FC<{
@@ -10,7 +14,7 @@ export const AnimatedObject: React.FC<{
 }> = ({ image, top, durationInSec }) => {
   const translateX = runLoop({
     durationInSec,
-    from: 0
+    animationFunc: updateLinearValue(0, SCREEN_WIDTH)
   });
 
   return (

@@ -14,7 +14,7 @@ const {
   block
 } = Animated;
 
-const WIDTH = Dimensions.get("window").width;
+export const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export type AnimationFunc = (
   clock: Animated.Clock,
@@ -28,18 +28,13 @@ export type AnimationFunc = (
     duration: Animated.Value<number>;
     toValue: Animated.Value<0>;
     easing: Animated.EasingFunction;
-  },
-  from: number,
-  to: number
+  }
 ) => Animated.Adaptable<number>;
 
-const updateLinearValue: AnimationFunc = (
-  clock: Animated.Clock,
-  state: any,
-  config: any,
-  from: number,
-  to: number
-) =>
+export const updateLinearValue: (from: number, to: number) => AnimationFunc = (
+  from,
+  to
+) => (clock: Animated.Clock, state: any, config: any) =>
   block([
     cond(
       clockRunning(clock),
@@ -67,14 +62,10 @@ const updateLinearValue: AnimationFunc = (
 
 export const runLoop = ({
   durationInSec,
-  from,
-  to = WIDTH + 8,
-  animationFunc = updateLinearValue
+  animationFunc
 }: {
   durationInSec: number;
-  from: number;
-  to?: number;
-  animationFunc?: AnimationFunc;
+  animationFunc: AnimationFunc;
 }) => {
   const clock = new Clock();
 
@@ -96,7 +87,7 @@ export const runLoop = ({
     startClock(clock),
 
     // process your state
-    animationFunc(clock, state, config, from, to),
+    animationFunc(clock, state, config),
 
     // when over (processed by timing at the end)
     cond(state.finished, [
