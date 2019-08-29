@@ -3,6 +3,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { ShadowBox } from "../../../components/ShadowBox";
 import { ItemIndex } from "./ItemIndex";
 import { ItemText } from "./ItemText";
+import { COLORS } from "../../../constants";
 
 export const SelectionItem: React.FC<{
   item: { key: string; text: string };
@@ -17,10 +18,12 @@ export const SelectionItem: React.FC<{
         style={{
           width: "95%",
           height: 48,
-          opacity: isActive ? 0.5 : 1,
           alignItems: "center",
           flexDirection: "row",
-          marginTop: 16
+          marginTop: 16,
+          ...(isActive
+            ? { opacity: 0.5, borderColor: COLORS.primary, borderWidth: 3 }
+            : { opacity: 1 })
         }}
         onLongPress={move}
         onPressOut={moveEnd}
