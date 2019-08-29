@@ -1,7 +1,15 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ViewStyle } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ViewStyle,
+  TouchableOpacity
+} from "react-native";
 import { COLORS } from "../../constants";
 import { ShadowBox } from "../../components/ShadowBox";
+import { useSelections } from "./context";
 
 const style = StyleSheet.create({
   outside: {
@@ -14,7 +22,7 @@ const style = StyleSheet.create({
     flexDirection: "row",
     width: "90%"
   },
-  blockBox: { backgroundColor: COLORS.orange, width: "5%", height: "100%" },
+  blockBox: { width: "5%", height: "100%" },
   contentContainer: {
     flexDirection: "row",
     backgroundColor: "white",
@@ -34,10 +42,14 @@ const style = StyleSheet.create({
   image: { width: 68, height: 68 }
 });
 
-export const Selection: React.FC<{ index: number; text: string }> = ({
-  index,
-  text
-}) => {
+export const Selection: React.FC<{
+  index: number;
+  text: string;
+  onPress: () => void;
+}> = ({ index, text, onPress }) => {
+  const selections = useSelections();
+  const isSelected = selections.includes(index.toString());
+
   const isOddIndex = index % 2 !== 0;
 
   const contentToRender = [
@@ -54,7 +66,15 @@ export const Selection: React.FC<{ index: number; text: string }> = ({
   ];
 
   const inside = [
-    <View key="block" style={style.blockBox} />,
+    <View
+      key="block"
+      style={[
+        style.blockBox,
+        isSelected
+          ? { backgroundColor: "green" }
+          : { backgroundColor: COLORS.orange }
+      ]}
+    />,
     <View
       key="content"
       style={[
@@ -79,7 +99,12 @@ export const Selection: React.FC<{ index: number; text: string }> = ({
 
   return (
     <ShadowBox style={[style.outside, containerPosition]}>
-      <View style={[style.container, containerPosition]}>{inside}</View>
+      <TouchableOpacity
+        style={[style.container, containerPosition]}
+        onPress={onPress}
+      >
+        {inside}
+      </TouchableOpacity>
     </ShadowBox>
   );
 };

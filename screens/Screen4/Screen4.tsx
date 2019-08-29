@@ -10,6 +10,8 @@ const style = StyleSheet.create({
 });
 
 export const Screen4: React.FC<ScreenProps> = ({ navigation }) => {
+  const selections = navigation.getParam("selections", []);
+
   return (
     <Screen>
       <View style={style.container}>
