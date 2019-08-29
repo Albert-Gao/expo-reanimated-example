@@ -28,7 +28,9 @@ export const BottomBar: React.FC<{
       <ShadowBox>
         <Image source={require("../assets/volumn.png")} style={styles.image} />
       </ShadowBox>
-      <Button onPress={onPress} label="NEXT" />
+      <ShadowBox>
+        <Button onPress={onPress} label="NEXT" />
+      </ShadowBox>
     </View>
   );
 };
