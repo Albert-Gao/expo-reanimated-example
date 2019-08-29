@@ -4,10 +4,12 @@ import { ScreenProps } from "../../utils";
 import { ROUTES } from "../../constants";
 import { Screen } from "../../components/Screen";
 import { NavigationButton } from "./NavigationButton";
+import { GreenBoat } from "./Animations/GreenBoat";
 
 const style = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    position: "relative"
   },
   buttonsBox: {
     flexDirection: "row",
@@ -25,6 +27,7 @@ export const Screen1: React.FC<ScreenProps> = ({ navigation }) => {
   return (
     <Screen>
       <View style={style.container}>
+        <GreenBoat />
         <View style={style.buttonsBox}>
           {[
             "self check",
